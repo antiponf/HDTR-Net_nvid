@@ -15,8 +15,8 @@ from torch.utils.data import DataLoader
 
 border = 2
 
-split_image_cmd = 'ffmpeg -hwaccel cuvid -hide_banner -loglevel quiet -y -i {} -r 25 {}/%05d.png'
-split_wav_cmd = 'ffmpeg -hwaccel cuvid -hide_banner -loglevel quiet -y -i {} -async 1 -ac 1 -vn -acodec pcm_s16le -ar 16000 {}'
+split_image_cmd = 'ffmpeg -hwaccel cuda -hide_banner -y -i {} -r 25 {}/%05d.png'
+split_wav_cmd = 'ffmpeg -hwaccel cuda -hide_banner -y -i {} -async 1 -ac 1 -vn -acodec pcm_s16le -ar 16000 {}'
 fa_3d = face_alignment.FaceAlignment(face_alignment.LandmarksType._3D, flip_input=False, device='cuda:0')
 
 def load_model(args):
